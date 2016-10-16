@@ -6,7 +6,7 @@ int main(int argc, char** argv) {
     bool max = false;
     // start unending loop
     while (1) {
-        if (tick == 10) {
+        if (tick == 600) {
             tick = 0;
             max = !max;
         }

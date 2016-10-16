@@ -9,6 +9,13 @@ cc -std=c99 -Wall square.c  -o _build/square
 _build/square
 ```
 
+## aucat
+
+```sh
+cat /dev/random | aucat -e u8 -c 0:0 -i -
+_build/square | aucat -e u8 -c 0:0 -i -
+```
+
 ## SNDIO Notes
 
 _sndio_ is kernel rather that user-space, so can't be heled up by
