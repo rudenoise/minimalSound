@@ -2,6 +2,13 @@
 
 Notes on making sounds in OpenBSD.
 
+## C Stuff
+
+```sh
+cc -std=c99 -Wall square.c  -o _build/square 
+_build/square
+```
+
 ## SNDIO Notes
 
 _sndio_ is kernel rather that user-space, so can't be heled up by
