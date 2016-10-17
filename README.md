@@ -22,6 +22,15 @@ _build/square 800 | aucat -e u8 -c 0:0 -i -
 _build/square 800 | aplay -t raw -f u8 -c 1 -r 44100
 ```
 
+## ASM
+
+```sh
+# build object file with debug symbols
+cc -std=c99 -g -c square.c
+# dissasemble
+objdump -d -M intel square.o
+```
+
 ## SNDIO Notes
 
 _sndio_ is kernel rather that user-space, so can't be heled up by
