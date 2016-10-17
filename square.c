@@ -5,13 +5,15 @@
 #define AMP_MAX 255
 #define AMP_MIN 0
 
-int main(int argc, char *argv[]) {
+int main(int argc, char** argv) {
     // set start values for vars
     int tick = 0;
     bool max = false;
     int radius;
     // get radius
     if (argc == 2) {
+        // cast the bytes from pos 1 in argv
+        // to an integer
         radius = atoi(argv[1]);
     } else {
         radius = 60;
