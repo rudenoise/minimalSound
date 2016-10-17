@@ -13,13 +13,13 @@ _build/square
 
 ```sh
 cat /dev/random | aucat -e u8 -c 0:0 -i -
-_build/square 300 | aucat -e u8 -c 0:0 -i -
+_build/square 800 | aucat -e u8 -c 0:0 -i -
 ```
 
 ## aplay/Linux
 
 ```sh
-_build/square 300 | aplay -t raw -f u8 -c 1 -r 44100
+_build/square 800 | aplay -t raw -f u8 -c 1 -r 44100
 ```
 
 ## SNDIO Notes
