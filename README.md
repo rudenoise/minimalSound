@@ -4,9 +4,16 @@ Notes on making sounds in OpenBSD.
 
 ## C Stuff
 
+Build
 ```sh
-cc -std=c99 -Wall square.c  -o _build/square 
-_build/square
+# all
+make
+# square
+make square
+# saw
+make saw
+# clean
+make clean
 ```
 
 ## aucat/openBSD
