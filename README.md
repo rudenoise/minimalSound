@@ -1,6 +1,6 @@
 # Audio
 
-Notes on making sounds in OpenBSD.
+Notes on making sounds in OpenBSD (and Linux).
 
 ## C Stuff
 
