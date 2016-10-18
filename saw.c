@@ -1,5 +1,6 @@
-#include <stdio.h>
+#include <math.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 #define AMP_MAX 255
@@ -9,8 +10,7 @@ int main(int argc, char** argv) {
     // set start values for vars
     int tick = 0;
     bool max = false;
-    int period;
-    double step, amp = 48.0;
+    double period, step, amp = 48.0;
     // get period
     if (argc == 2) {
         // cast the bytes from pos 1 in argv
@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
             amp += step;
         }
         // write out value
-        putchar(amp);
+        putchar(round(amp));
         // tick
         tick += 1;
     }
