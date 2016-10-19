@@ -1,4 +1,4 @@
-# Audio
+# Minimal Sound
 
 Notes on making sounds in OpenBSD (and Linux).
 
