@@ -12,21 +12,28 @@ make
 make square
 # saw
 make saw
+# static with musl
+make static-musl
 # clean
 make clean
 ```
 
-## aucat/openBSD
+## Listen
+
+### aucat/openBSD
 
 ```sh
 cat /dev/random | aucat -e u8 -c 0:0 -i -
 _build/square 800 | aucat -e u8 -c 0:0 -i -
 ```
 
-## aplay/Linux
+### aplay/Linux
 
 ```sh
 _build/square 800 | aplay -t raw -f u8 -c 1 -r 44100
+# or
+make test-linux-square
+make test-linux-saw
 ```
 
 ## ASM

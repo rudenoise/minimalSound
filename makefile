@@ -14,5 +14,11 @@ saw:
 	mkdir -p _build
 	cc -std=c99 -Wall saw.c -lm -o _build/saw
 
+test-linux-square:
+	timeout 0.01 _build/square 500 | aplay -t raw -f u8 -c 1 -r 44100
+
+test-linux-saw:
+	timeout 0.01 _build/saw 500 | aplay -t raw -f u8 -c 1 -r 44100
+
 clean:
 	rm -fr _build
