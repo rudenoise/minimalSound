@@ -9,7 +9,6 @@
 int main(int argc, char** argv) {
     // set start values for vars
     int tick = 0;
-    bool max = false;
     double period, step, amp = 48.0;
     // get period
     if (argc == 2) {
@@ -26,8 +25,6 @@ int main(int argc, char** argv) {
         if (tick == period) {
             // half a cycle done, reset count
             tick = 0;
-            // reverse amplitude
-            max = !max;
             // drop the aplitude back to min
             amp = AMP_MIN;
         }

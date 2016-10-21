@@ -30,13 +30,20 @@ int main(int argc, char** argv) {
             amp -= step;
         }
         if (amp >= AMP_MAX) {
+            // reached the top amplitude
+            // start descent
             rising = false;
+            // limit to maximum amplitude
             amp = AMP_MAX;
         }
         if (amp <= AMP_MIN) {
+            // reached minimum amplitude
+            // start ascent
             rising = true;
+            // limit to minimum amplitude
             amp = AMP_MIN;
         }
+        // send the sample
         putchar(round(amp));
     }
     return 0;
