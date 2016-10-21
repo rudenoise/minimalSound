@@ -11,7 +11,7 @@
 int main(int argc, char** argv) {
     // set start values for vars
     bool rising = false;
-    int period, quaterPeriod, i;
+    int period, quaterPeriod, i, halfCount = 0;
     double stepRad;
     // get halfPeriod
     if (argc == 2) {
@@ -38,13 +38,22 @@ int main(int argc, char** argv) {
     i = 0;
     while (1) {
         if (i == quaterPeriod) {
+            halfCount += 1;
             rising = false;
         }
         if (i == 0) {
+            if (halfCount == 2) {
+                halfCount = 0;
+            }
             rising = true;
         }
         // send the sample
-        putchar(round(sequence[i] + 127));
+        if (halfCount < 2) {
+            putchar(round(sequence[i] + 127));
+        } else {
+            putchar(round(128 - sequence[i]));
+            //putchar(127);
+        }
         // ready the next in sequence
         if (rising == true) {
             i += 1;

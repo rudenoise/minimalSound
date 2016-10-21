@@ -1,4 +1,4 @@
-all: square saw triangle
+all: square saw triangle sine
 
 static-musl:
 	mkdir -p _build
