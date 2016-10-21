@@ -33,7 +33,24 @@ int main(int argc, char** argv) {
         // calculate amplitude of opposite side
         // using sine of step
         // multiplied by radius (1/2 maximum amplitude)
-        sequence[i] = round(sin(stepRad * i) * (AMP_MAX / 2));
+        sequence[i] = round(sin(stepRad * i) * ((AMP_MAX + 1) / 2));
+    }
+    i = 0;
+    while (1) {
+        if (i == quaterPeriod) {
+            rising = false;
+        }
+        if (i == 0) {
+            rising = true;
+        }
+        // send the sample
+        putchar(round(sequence[i] + 127));
+        // ready the next in sequence
+        if (rising == true) {
+            i += 1;
+        } else {
+            i -= 1;
+        }
     }
 
     return 0;
