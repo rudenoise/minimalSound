@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
         // calculate amplitude of opposite side
         // using sine of step
         // multiplied by radius (1/2 maximum amplitude)
-        sequence[i] = round(sin(stepRad * i) * ((AMP_MAX + 1) / 2));
+        sequence[i] = round(sin(stepRad * i) * ((AMP_MAX - 1) / 2));
     }
     i = 0;
     while (1) {
@@ -49,7 +49,7 @@ int main(int argc, char** argv) {
         if (quaterCount < 2) {
             out = (127 + round(sequence[i]));
         } else {
-            out = (128 - round(sequence[i]));
+            out = (127 - round(sequence[i]));
         }
         if (rising) {
             i += 1;

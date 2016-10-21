@@ -94,6 +94,11 @@ man sndiod
 man  sndio
 ```
 
+## Visualising Wave Forms
+
+* [xoscope linux](http://xoscope.sourceforge.net/)
+* [audread openBSD](http://ab1jx.1apps.com/ham/toys/audread/index.html)
+
 ## Links
 
 * [sndio slides](http://www.openbsd.org/papers/asiabsdcon2010_sndio_slides.pdf)
