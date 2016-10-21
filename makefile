@@ -20,5 +20,15 @@ test-linux-square:
 test-linux-saw:
 	timeout 0.01 _build/saw 500 | aplay -t raw -f u8 -c 1 -r 44100
 
+test-openBSD-square:
+	_build/square 500 | aucat -e u8 -c 0:0 -i - &
+	sleep 1
+	kill `pgrep square`
+
+test-openBSD-saw:
+	_build/saw 500 | aucat -e u8 -c 0:0 -i - &
+	sleep 1
+	kill `pgrep saw`
+
 clean:
 	rm -fr _build
