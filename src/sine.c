@@ -38,12 +38,6 @@ int main(int argc, char** argv) {
         // using sine of step
         // multiplied by radius (1/2 maximum amplitude)
         sequence[i] = round(sin(stepRad * i) * ((AMP_MAX - 1) / 2));
-        if (i == 0) {
-            sequence[i] = 0;
-        }
-        if (i == (quaterPeriod -1)) {
-            sequence[i] = (AMP_MAX - 1) / 2;
-        }
     }
 
     // reset counter
@@ -52,13 +46,13 @@ int main(int argc, char** argv) {
     // generate wave infinitely
     while (1) {
 
-        if (i < 1) {
-            rising = true;
-            firstHalf = !firstHalf;
-        }
-
-        if (i > quaterPeriod) {
-            rising = false;
+        if (firstHalf) {
+            out = (127 + sequence[i]);
+        } else {
+            out = (128 - sequence[i]);
+            if (i > 5 && sequence[i] <= 1) {
+                out = 0;
+            }
         }
 
         if (rising) {
@@ -67,10 +61,13 @@ int main(int argc, char** argv) {
             i -= 1;
         }
 
-        if (firstHalf) {
-            out = (127 + round(sequence[i]));
-        } else {
-            out = (127 - round(sequence[i]));
+        if (i == 0) {
+            rising = true;
+            firstHalf = !firstHalf;
+        }
+
+        if (i >= quaterPeriod) {
+            rising = false;
         }
 
         putchar(out);
