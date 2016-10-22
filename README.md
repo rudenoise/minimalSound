@@ -50,6 +50,8 @@ bash/makeVisualiser.bash sine
 # _build/sine.gif
 ```
 
+![square](./img/square.gif)
+
 ## ASM
 
 ```sh
