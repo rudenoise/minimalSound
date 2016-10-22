@@ -25,6 +25,9 @@ make clean
 ```sh
 cat /dev/random | aucat -e u8 -c 0:0 -i -
 _build/square 800 | aucat -e u8 -c 0:0 -i -
+# or
+make test-openBSD-sine
+make test-openBSD-triangle
 ```
 
 ### aplay/Linux
@@ -34,6 +37,17 @@ _build/square 800 | aplay -t raw -f u8 -c 1 -r 44100
 # or
 make test-linux-square
 make test-linux-saw
+```
+
+## Visualising Wave Forms
+
+```sh
+# make a gnuplot of a cycle
+bash/makeVisualiser.bash square
+bash/makeVisualiser.bash saw
+bash/makeVisualiser.bash triangle
+bash/makeVisualiser.bash sine
+# _build/sine.gif
 ```
 
 ## ASM
@@ -92,17 +106,6 @@ aucat -i recording.wav
 # audio server
 man sndiod
 man  sndio
-```
-
-## Visualising Wave Forms
-
-```sh
-# make a gnuplot of a cycle
-bash/makeVisualiser.bash square
-bash/makeVisualiser.bash saw
-bash/makeVisualiser.bash triangle
-bash/makeVisualiser.bash sine
-# _build/sine.gif
 ```
 
 * [xoscope linux](http://xoscope.sourceforge.net/)
