@@ -50,9 +50,6 @@ int main(int argc, char** argv) {
             out = (127 + sequence[i]);
         } else {
             out = (128 - sequence[i]);
-            if (i > 5 && sequence[i] <= 1) {
-                out = 0;
-            }
         }
 
         if (rising) {
@@ -66,7 +63,7 @@ int main(int argc, char** argv) {
             firstHalf = !firstHalf;
         }
 
-        if (i >= quaterPeriod) {
+        if (i == (quaterPeriod - 1)) {
             rising = false;
         }
 
