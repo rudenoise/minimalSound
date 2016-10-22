@@ -48,6 +48,8 @@ bash/makeVisualiser.bash saw
 bash/makeVisualiser.bash triangle
 bash/makeVisualiser.bash sine
 # _build/sine.gif
+# or
+make draw-linux
 ```
 
 ![sine`](./img/sine.gif)
