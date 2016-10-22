@@ -36,6 +36,12 @@ test-linux-triangle:
 test-linux-sine:
 	timeout 0.01 _build/sine 500 | aplay -t raw -f u8 -c 1 -r 44100
 
+draw-linux:
+	bash/makeVisualiser.bash square
+	bash/makeVisualiser.bash saw
+	bash/makeVisualiser.bash triangle
+	bash/makeVisualiser.bash sine
+
 test-openBSD-square:
 	_build/square 500 | aucat -e u8 -c 0:0 -i - &
 	sleep 1

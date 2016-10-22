@@ -97,14 +97,12 @@ man  sndio
 ## Visualising Wave Forms
 
 ```sh
-echo "#!/bin/bash" > src/sine.bash
-echo "gnuplot << EOF" >> src/sine.bash
-echo "set terminal gif" >> src/sine.bash
-echo "set output '_build/sine.gif'" >> src/sine.bash
-echo "plot '-' using 1:2" >> src/sine.bash
-_build/sine | _build/testPlot >> src/sine.bash
-echo "        e" >> src/sine.bash
-echo "EOF" >> src/sine.bash
+# make a gnuplot of a cycle
+bash/makeVisualiser.bash square
+bash/makeVisualiser.bash saw
+bash/makeVisualiser.bash triangle
+bash/makeVisualiser.bash sine
+# _build/sine.gif
 ```
 
 * [xoscope linux](http://xoscope.sourceforge.net/)
