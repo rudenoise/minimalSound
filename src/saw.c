@@ -9,7 +9,7 @@
 int main(int argc, char** argv) {
     // set start values for vars
     int tick = 0;
-    double period, step, amp = 48.0;
+    double period, step, amp = 0.0;
     // get period
     if (argc == 2) {
         // cast the bytes from pos 1 in argv
