@@ -24,31 +24,42 @@ sine:
 	mkdir -p _build
 	cc -std=c99 -Wall src/sine.c -lm -o _build/sine
 
-testPlot:
+plot:
 	cc -std=c99 -Wall src/testPlot.c -o _build/testPlot
 
-test-linux-square:
+linuxTestSquare:
 	timeout 0.01 _build/square 500 | aplay -t raw -f u8 -c 1 -r 44100
 
-test-linux-saw:
+linuxTestSaw:
 	timeout 0.01 _build/saw 500 | aplay -t raw -f u8 -c 1 -r 44100
 
-test-linux-triangle:
+linuxTestTriangle:
 	timeout 0.01 _build/triangle 500 | aplay -t raw -f u8 -c 1 -r 44100
 
-test-linux-sine:
+linuxTestSine:
 	timeout 0.01 _build/sine 500 | aplay -t raw -f u8 -c 1 -r 44100
 
-draw-linux:
+linuxDraw: linuxDrawSquare linuxDrawSaw linuxDrawTriangle linuxDrawSine
+
+linuxTestSquare:
 	bash/makeVisualiser.bash square
+
+linuxTestSaw:
 	bash/makeVisualiser.bash saw
+
+linuxTestTriangle:
 	bash/makeVisualiser.bash triangle
+
+linuxTestSine:
 	bash/makeVisualiser.bash sine
 
-openBuildAndDrawSquare: square openDrawSquare
-openBuildAndDrawSaw: saw openDrawSaw
-openBuildAndDrawTriangle: triangle openDrawTriangle
-openBuildAndDrawSine: square openDrawSine
+linuxBuildAndDrawSquare: square linuxDrawSquare
+
+linuxBuildAndDrawSaw: saw linuxDrawSaw
+
+linuxBuildAndDrawTriangle: triangle linuxDrawTriangle
+
+linuxBuildAndDrawSine: sine linuxDrawSine
 
 openDrawAll: openDrawSquare openDrawSaw openDrawTriangle openDrawSine
 
@@ -67,6 +78,11 @@ openDrawTriangle:
 openDrawSine:
 	ksh/makeVisualiser.ksh sine
 	cat _build/sine.txt
+
+openBuildAndDrawSquare: square openDrawSquare
+openBuildAndDrawSaw: saw openDrawSaw
+openBuildAndDrawTriangle: triangle openDrawTriangle
+openBuildAndDrawSine: square openDrawSine
 
 openTestAll: openTestSquare openTestSaw openTestTriangle openTestSine
 
