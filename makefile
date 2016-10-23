@@ -1,4 +1,4 @@
-all: square saw triangle sine
+all: square saw triangle sine testPlot
 
 static-musl:
 	mkdir -p _build
@@ -24,6 +24,9 @@ sine:
 	mkdir -p _build
 	cc -std=c99 -Wall src/sine.c -lm -o _build/sine
 
+testPlot:
+	cc -std=c99 -Wall src/testPlot.c -o _build/testPlot
+
 test-linux-square:
 	timeout 0.01 _build/square 500 | aplay -t raw -f u8 -c 1 -r 44100
 
@@ -42,25 +45,50 @@ draw-linux:
 	bash/makeVisualiser.bash triangle
 	bash/makeVisualiser.bash sine
 
-test-openBSD-square:
+openBuildAndDrawSquare: square openDrawSquare
+openBuildAndDrawSaw: saw openDrawSaw
+openBuildAndDrawTriangle: triangle openDrawTriangle
+openBuildAndDrawSine: square openDrawSine
+
+openDrawAll: openDrawSquare openDrawSaw openDrawTriangle openDrawSine
+
+openDrawSquare:
+	ksh/makeVisualiser.ksh square
+	cat _build/square.txt
+
+openDrawSaw:
+	ksh/makeVisualiser.ksh saw
+	cat _build/saw.txt
+
+openDrawTriangle:
+	ksh/makeVisualiser.ksh triangle
+	cat _build/triangle.txt
+
+openDrawSine:
+	ksh/makeVisualiser.ksh sine
+	cat _build/sine.txt
+
+openTestAll: openTestSquare openTestSaw openTestTriangle openTestSine
+
+openTestSquare:
 	_build/square 500 | aucat -e u8 -c 0:0 -i - &
 	sleep 1
 	kill `pgrep square`
 
-test-openBSD-saw:
+openTestSaw:
 	_build/saw 500 | aucat -e u8 -c 0:0 -i - &
 	sleep 1
 	kill `pgrep saw`
 
-test-openBSD-triangle:
+openTestTriangle:
 	_build/triangle 500 | aucat -e u8 -c 0:0 -i - &
 	sleep 1
-	kill `pgrep saw`
+	kill `pgrep triangle`
 
-test-openBSD-sine:
+openTestSine:
 	_build/sine 500 | aucat -e u8 -c 0:0 -i - &
 	sleep 1
-	kill `pgrep saw`
+	kill `pgrep sine`
 
 clean:
 	rm -fr _build
