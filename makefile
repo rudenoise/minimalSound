@@ -1,4 +1,4 @@
-all: square saw triangle sine testPlot
+all: square saw triangle sine plot
 
 static-musl:
 	mkdir -p _build
@@ -41,16 +41,16 @@ linuxTestSine:
 
 linuxDraw: linuxDrawSquare linuxDrawSaw linuxDrawTriangle linuxDrawSine
 
-linuxTestSquare:
+linuxDrawSquare:
 	bash/makeVisualiser.bash square
 
-linuxTestSaw:
+linuxDrawSaw:
 	bash/makeVisualiser.bash saw
 
-linuxTestTriangle:
+linuxDrawTriangle:
 	bash/makeVisualiser.bash triangle
 
-linuxTestSine:
+linuxDrawSine:
 	bash/makeVisualiser.bash sine
 
 linuxBuildAndDrawSquare: square linuxDrawSquare
