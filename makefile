@@ -43,15 +43,19 @@ linuxDraw: linuxDrawSquare linuxDrawSaw linuxDrawTriangle linuxDrawSine
 
 linuxDrawSquare:
 	bash/makeVisualiser.bash square
+	cat _build/square.txt
 
 linuxDrawSaw:
 	bash/makeVisualiser.bash saw
+	cat _build/saw.txt
 
 linuxDrawTriangle:
 	bash/makeVisualiser.bash triangle
+	cat _build/triangle.txt
 
 linuxDrawSine:
 	bash/makeVisualiser.bash sine
+	cat _build/sine.txt
 
 linuxBuildAndDrawSquare: square linuxDrawSquare
 

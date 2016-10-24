@@ -2,7 +2,7 @@
 
 set -e
 
-rm -f _build/$1.ksh _build/$1.gif
+rm -f _build/$1.ksh _build/$1.txt
 
 echo "#!/bin/ksh" > _build/$1.ksh
 echo "gnuplot << EOF" >> _build/$1.ksh
