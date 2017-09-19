@@ -26,8 +26,8 @@ make clean
 cat /dev/random | aucat -e u8 -c 0:0 -i -
 _build/square 800 | aucat -e u8 -c 0:0 -i -
 # or
-make test-openBSD-sine
-make test-openBSD-triangle
+make kshTestSquare
+make kshDrawSquare
 ```
 
 ### aplay/Linux
@@ -35,8 +35,8 @@ make test-openBSD-triangle
 ```sh
 _build/square 800 | aplay -t raw -f u8 -c 1 -r 44100
 # or
-make test-linux-square
-make test-linux-saw
+make bashTestSquare
+make bashDrawSquare
 ```
 
 ## Visualising Wave Forms
@@ -49,7 +49,7 @@ bash/makeVisualiser.bash triangle
 bash/makeVisualiser.bash sine
 # _build/sine.gif
 # or
-make draw-linux
+make bashDraw
 ```
 
 ![sine`](./img/sine.gif)

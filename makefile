@@ -27,85 +27,85 @@ sine:
 plot:
 	cc -std=c99 -Wall src/testPlot.c -o _build/testPlot
 
-linuxTestSquare:
+bashTestSquare:
 	timeout 0.01 _build/square 500 | aplay -t raw -f u8 -c 1 -r 44100
 
-linuxTestSaw:
+bashTestSaw:
 	timeout 0.01 _build/saw 500 | aplay -t raw -f u8 -c 1 -r 44100
 
-linuxTestTriangle:
+bashTestTriangle:
 	timeout 0.01 _build/triangle 500 | aplay -t raw -f u8 -c 1 -r 44100
 
-linuxTestSine:
+bashTestSine:
 	timeout 0.01 _build/sine 500 | aplay -t raw -f u8 -c 1 -r 44100
 
-linuxDraw: linuxDrawSquare linuxDrawSaw linuxDrawTriangle linuxDrawSine
+bashDraw: bashDrawSquare bashDrawSaw bashDrawTriangle bashDrawSine
 
-linuxDrawSquare:
+bashDrawSquare:
 	bash/makeVisualiser.bash square
 	cat _build/square.txt
 
-linuxDrawSaw:
+bashDrawSaw:
 	bash/makeVisualiser.bash saw
 	cat _build/saw.txt
 
-linuxDrawTriangle:
+bashDrawTriangle:
 	bash/makeVisualiser.bash triangle
 	cat _build/triangle.txt
 
-linuxDrawSine:
+bashDrawSine:
 	bash/makeVisualiser.bash sine
 	cat _build/sine.txt
 
-linuxBuildAndDrawSquare: square linuxDrawSquare
+bashBuildAndDrawSquare: square bashDrawSquare
 
-linuxBuildAndDrawSaw: saw linuxDrawSaw
+bashBuildAndDrawSaw: saw bashDrawSaw
 
-linuxBuildAndDrawTriangle: triangle linuxDrawTriangle
+bashBuildAndDrawTriangle: triangle bashDrawTriangle
 
-linuxBuildAndDrawSine: sine linuxDrawSine
+bashBuildAndDrawSine: sine bashDrawSine
 
-openDrawAll: openDrawSquare openDrawSaw openDrawTriangle openDrawSine
+kshDrawAll: kshDrawSquare kshDrawSaw kshDrawTriangle kshDrawSine
 
-openDrawSquare:
+kshDrawSquare:
 	ksh/makeVisualiser.ksh square
 	cat _build/square.txt
 
-openDrawSaw:
+kshDrawSaw:
 	ksh/makeVisualiser.ksh saw
 	cat _build/saw.txt
 
-openDrawTriangle:
+kshDrawTriangle:
 	ksh/makeVisualiser.ksh triangle
 	cat _build/triangle.txt
 
-openDrawSine:
+kshDrawSine:
 	ksh/makeVisualiser.ksh sine
 	cat _build/sine.txt
 
-openBuildAndDrawSquare: square openDrawSquare
-openBuildAndDrawSaw: saw openDrawSaw
-openBuildAndDrawTriangle: triangle openDrawTriangle
-openBuildAndDrawSine: square openDrawSine
+kshBuildAndDrawSquare: square kshDrawSquare
+kshBuildAndDrawSaw: saw kshDrawSaw
+kshBuildAndDrawTriangle: triangle kshDrawTriangle
+kshBuildAndDrawSine: square kshDrawSine
 
-openTestAll: openTestSquare openTestSaw openTestTriangle openTestSine
+kshTestAll: kshTestSquare kshTestSaw kshTestTriangle kshTestSine
 
-openTestSquare:
+kshTestSquare:
 	_build/square 500 | aucat -e u8 -c 0:0 -i - &
 	sleep 1
 	kill `pgrep square`
 
-openTestSaw:
+kshTestSaw:
 	_build/saw 500 | aucat -e u8 -c 0:0 -i - &
 	sleep 1
 	kill `pgrep saw`
 
-openTestTriangle:
+kshTestTriangle:
 	_build/triangle 500 | aucat -e u8 -c 0:0 -i - &
 	sleep 1
 	kill `pgrep triangle`
 
-openTestSine:
+kshTestSine:
 	_build/sine 500 | aucat -e u8 -c 0:0 -i - &
 	sleep 1
 	kill `pgrep sine`
