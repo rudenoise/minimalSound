@@ -27,17 +27,41 @@ sine:
 plot:
 	cc -std=c99 -Wall src/testPlot.c -o _build/testPlot
 
-bashTestSquare:
+linuxTestSquare:
 	timeout 0.01 _build/square 500 | aplay -t raw -f u8 -c 1 -r 44100
 
-bashTestSaw:
+linuxTestSaw:
 	timeout 0.01 _build/saw 500 | aplay -t raw -f u8 -c 1 -r 44100
 
-bashTestTriangle:
+linuxTestTriangle:
 	timeout 0.01 _build/triangle 500 | aplay -t raw -f u8 -c 1 -r 44100
 
-bashTestSine:
+linuxTestSine:
 	timeout 0.01 _build/sine 500 | aplay -t raw -f u8 -c 1 -r 44100
+
+macTestSquare:
+	_build/square 500 | mplayer -cache 1024 -quiet -rawaudio samplesize=1:channels=1:rate=44100 -demuxer rawaudio -
+	sleep 3
+	kill `pgrep mplayer`
+	kill `pgrep square`
+
+macTestSaw:
+	_build/saw 500 | mplayer -cache 1024 -quiet -rawaudio samplesize=1:channels=1:rate=44100 -demuxer rawaudio -
+	sleep 3
+	kill `pgrep mplayer`
+	kill `pgrep saw`
+
+macTestTriangle:
+	_build/triangle 500 | mplayer -cache 1024 -quiet -rawaudio samplesize=1:channels=1:rate=44100 -demuxer rawaudio -
+	sleep 3
+	kill `pgrep mplayer`
+	kill `pgrep triangle`
+
+macTestSine:
+	_build/sine 500 | mplayer -cache 1024 -quiet -rawaudio samplesize=1:channels=1:rate=44100 -demuxer rawaudio -
+	sleep 3
+	kill `pgrep mplayer`
+	kill `pgrep sine`
 
 bashDraw: bashDrawSquare bashDrawSaw bashDrawTriangle bashDrawSine
 

@@ -35,8 +35,17 @@ make kshDrawSquare
 ```sh
 _build/square 800 | aplay -t raw -f u8 -c 1 -r 44100
 # or
-make bashTestSquare
-make bashDrawSquare
+make linuxTestSquare
+make linuxDrawSquare
+```
+
+### mplay/MacOS
+
+```sh
+_build/square 500 | mplayer -cache 1024 -quiet -rawaudio samplesize=1:channels=1:rate=14000 -demuxer rawaudio -
+# or
+make macTestSquare
+make macDrawSquare
 ```
 
 ## Visualising Wave Forms
